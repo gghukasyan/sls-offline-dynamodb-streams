@@ -1,29 +1,30 @@
-# serverless-offline-dynamodb-streams
+# sls-offline-dynamodb-streams
 
-This Serverless-offline-dynamodb-streams plugin emulates AWS λ and DynamoDBStreams on your local machine. To do so, it listens DynamoDBStreams stream and invokes your handlers.
+This sls-offline-dynamodb-streams plugin emulates AWS λ and DynamoDBStreams on your local machine. To do so, it listens DynamoDBStreams stream and invokes your handlers.
 
-*Features*:
+_Features_:
+
 - [Serverless Webpack](https://github.com/serverless-heaven/serverless-webpack/) support.
 - DynamoDBStreams configurations: batchsize and startingPosition.
 
 ## Installation
 
-First, add `serverless-offline-dynamodb-streams` to your project:
+First, add `sls-offline-dynamodb-streams` to your project:
 
 ```sh
-npm install serverless-offline-dynamodb-streams
+npm install sls-offline-dynamodb-streams
 ```
 
-Then inside your project's `serverless.yml` file, add following entry to the plugins section before `serverless-offline` (and after `serverless-webpack` if presents): `serverless-offline-dynamodb-streams`.
+Then inside your project's `serverless.yml` file, add following entry to the plugins section before `serverless-offline` (and after `serverless-webpack` if presents): `sls-offline-dynamodb-streams`.
 
 ```yml
 plugins:
   - serverless-webpack
-  - serverless-offline-dynamodb-streams
+  - sls-offline-dynamodb-streams
   - serverless-offline
 ```
 
-[See example](../serverless-offline-dynamodb-streams-integration/README.md)
+[See example](../sls-offline-dynamodb-streams-integration/README.md)
 
 ## Configure
 
@@ -44,17 +45,16 @@ functions:
           startingPosition: TRIM_HORIZON
 ```
 
-
 ### DynamoDB
 
-The configuration of [`aws.DynamoDBStreams`'s client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDBStreams.html#constructor-property) of the plugin is done by defining a `custom: serverless-offline-dynamodb-streams` object in your `serverless.yml` with your specific configuration.
+The configuration of [`aws.DynamoDBStreams`'s client](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDBStreams.html#constructor-property) of the plugin is done by defining a `custom: sls-offline-dynamodb-streams` object in your `serverless.yml` with your specific configuration.
 
 You could use [mhart's Dynalite](https://github.com/mhart/dynalite) with the following configuration:
 
 ```yml
 custom:
-  serverless-offline-dynamodb-streams:
-    apiVersion: '2013-12-02'
+  sls-offline-dynamodb-streams:
+    apiVersion: "2013-12-02"
     endpoint: http://0.0.0.0:8000
     region: eu-west-1
     accessKeyId: root
